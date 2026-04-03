@@ -83,10 +83,18 @@ export default function PromotionalOffers() {
               variants={itemVariants}
               className={`bg-gradient-to-br ${offer.color} rounded-2xl p-8 text-white relative overflow-hidden group`}
               whileHover={{
-                y: -10,
-                boxShadow: "0 20px 50px rgba(0, 0, 0, 0.3)",
+                y: -15,
+                boxShadow: "0 30px 60px rgba(0, 0, 0, 0.4)",
               }}
+              whileTap={{ scale: 0.95 }}
             >
+              {/* Animated gradient overlay */}
+              <motion.div
+                className="absolute inset-0 opacity-0 group-hover:opacity-20 bg-white rounded-2xl"
+                animate={{ scale: [1, 1.2, 1] }}
+                transition={{ duration: 3, repeat: Infinity }}
+              />
+
               {/* Background decoration */}
               <div className="absolute top-0 right-0 text-8xl opacity-10 group-hover:opacity-20 transition-opacity">
                 {offer.icon}
@@ -96,8 +104,8 @@ export default function PromotionalOffers() {
               <div className="relative z-10">
                 <motion.div
                   className="text-6xl mb-4"
-                  animate={{ rotate: [0, 5, -5, 0] }}
-                  transition={{ duration: 2, repeat: Infinity }}
+                  animate={{ rotate: [0, 8, -8, 0], y: [0, -5, 0] }}
+                  transition={{ duration: 3, repeat: Infinity }}
                 >
                   {offer.icon}
                 </motion.div>
@@ -106,12 +114,6 @@ export default function PromotionalOffers() {
                   {offer.description}
                 </p>
               </div>
-
-              {/* Hover Effect */}
-              <motion.div
-                className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl"
-                whileHover={{ scale: 1.1 }}
-              />
             </motion.div>
           ))}
         </motion.div>

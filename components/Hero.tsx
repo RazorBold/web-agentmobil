@@ -29,18 +29,18 @@ export default function Hero() {
       <motion.div
         className="absolute -top-40 -right-40 w-80 h-80 bg-red-500 rounded-full mix-blend-multiply filter blur-3xl opacity-30"
         animate={{
-          x: [0, 100, 0],
-          y: [0, 50, 0],
+          x: [0, 100, -50, 0],
+          y: [0, 50, 100, 0],
         }}
-        transition={{ duration: 10, repeat: Infinity }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
         className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-30"
         animate={{
-          x: [0, -100, 0],
-          y: [0, -50, 0],
+          x: [0, -100, 50, 0],
+          y: [0, -50, -100, 0],
         }}
-        transition={{ duration: 10, repeat: Infinity }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
       />
 
       <div className="max-w-7xl mx-auto px-4 relative z-10">
@@ -141,18 +141,21 @@ export default function Hero() {
             {/* Car Image Background */}
             <motion.div
               className="absolute inset-0 bg-gradient-to-tr from-red-500/20 to-orange-500/20 rounded-3xl"
-              animate={{ boxShadow: ["0 0 60px rgba(239, 68, 68, 0.3)", "0 0 100px rgba(239, 68, 68, 0.6)", "0 0 60px rgba(239, 68, 68, 0.3)"] }}
-              transition={{ duration: 3, repeat: Infinity }}
+              animate={{ 
+                boxShadow: ["0 0 60px rgba(239, 68, 68, 0.2)", "0 0 100px rgba(239, 68, 68, 0.4)", "0 0 60px rgba(239, 68, 68, 0.2)"],
+                scale: [1, 1.05, 1]
+              }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             />
 
             {/* Car Icon */}
             <motion.div
               className="text-9xl"
               animate={{
-                y: [0, -20, 0],
-                rotate: [0, 5, -5, 0],
+                y: [0, -25, 0],
+                rotate: [0, 3, -3, 0],
               }}
-              transition={{ duration: 4, repeat: Infinity }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             >
               🚗
             </motion.div>
@@ -160,8 +163,8 @@ export default function Hero() {
             {/* Floating Cards */}
             <motion.div
               className="absolute bottom-10 left-0 bg-white rounded-lg p-4 shadow-2xl"
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+              animate={{ y: [0, -15, 0] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
             >
               <p className="text-sm text-gray-600">Harga Mulai Dari</p>
               <p className="text-2xl font-bold text-red-600">6.5 Juta</p>
@@ -169,8 +172,8 @@ export default function Hero() {
 
             <motion.div
               className="absolute top-10 right-0 bg-white rounded-lg p-4 shadow-2xl"
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 2, repeat: Infinity, delay: 1 }}
+              animate={{ y: [0, 15, 0] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1 }}
             >
               <p className="text-sm text-gray-600">Cicilan Per Bulan</p>
               <p className="text-2xl font-bold text-blue-600">Rp 3.8 Juta</p>
