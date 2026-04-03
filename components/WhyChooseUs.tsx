@@ -98,20 +98,39 @@ export default function WhyChooseUs() {
               <motion.div
                 key={i}
                 variants={itemVariants}
-                className="bg-gradient-to-br from-slate-50 to-slate-100 rounded-2xl p-8 text-center group hover:shadow-2xl transition-all"
-                whileHover={{ y: -10 }}
+                className="bg-gradient-to-br from-slate-50 to-slate-100 rounded-3xl p-8 text-center group hover:shadow-2xl transition-all border border-slate-200 hover:border-slate-300 relative overflow-hidden"
+                whileHover={{ y: -15, scale: 1.02 }}
               >
+                {/* Premium shine effect */}
                 <motion.div
-                  className="text-5xl mb-4"
-                  animate={{ scale: [1, 1.2, 1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                >
-                  {feature.icon}
-                </motion.div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">
-                  {feature.title}
-                </h3>
-                <p className="text-gray-600">{feature.description}</p>
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-tr from-white/20 via-transparent to-white/20"
+                  transition={{ duration: 0.3 }}
+                />
+
+                <div className="relative z-10 flex flex-col h-full">
+                  {/* Icon */}
+                  <motion.div
+                    className="text-6xl mb-6 inline-block mx-auto"
+                    animate={{ scale: [1, 1.15, 1], rotate: [0, 5, -5, 0] }}
+                    transition={{ duration: 3, repeat: Infinity }}
+                    whileHover={{ scale: 1.3, rotate: 0 }}
+                  >
+                    {feature.icon}
+                  </motion.div>
+
+                  {/* Divider */}
+                  <div className="w-8 h-1 bg-gradient-to-r from-slate-400 to-slate-300 rounded-full mb-6 mx-auto" />
+
+                  {/* Title */}
+                  <h3 className="text-xl font-black text-slate-900 mb-3">
+                    {feature.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-slate-600 font-semibold leading-relaxed flex-1">
+                    {feature.description}
+                  </p>
+                </div>
               </motion.div>
             ))}
           </motion.div>
@@ -140,25 +159,43 @@ export default function WhyChooseUs() {
               <motion.div
                 key={i}
                 variants={itemVariants}
-                className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all"
-                whileHover={{ y: -10 }}
+                className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all border border-slate-100 hover:border-slate-200 relative overflow-hidden group"
+                whileHover={{ y: -15 }}
               >
-                {/* Rating */}
-                <div className="flex gap-1 mb-4">
-                  {[...Array(testimonial.rating)].map((_, j) => (
-                    <span key={j} className="text-2xl">⭐</span>
-                  ))}
-                </div>
+                {/* Shine effect */}
+                <motion.div
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-tr from-slate-50/20 via-transparent to-slate-50/20"
+                  transition={{ duration: 0.3 }}
+                />
 
-                {/* Text */}
-                <p className="text-gray-700 mb-6 leading-relaxed">
-                  "{testimonial.text}"
-                </p>
+                <div className="relative z-10">
+                  {/* Rating */}
+                  <div className="flex gap-1 mb-6">
+                    {[...Array(testimonial.rating)].map((_, j) => (
+                      <motion.span
+                        key={j}
+                        className="text-2xl"
+                        animate={{ scale: [1, 1.2, 1] }}
+                        transition={{ duration: 2, delay: j * 0.1, repeat: Infinity }}
+                      >
+                        ⭐
+                      </motion.span>
+                    ))}
+                  </div>
 
-                {/* Author */}
-                <div>
-                  <p className="font-bold text-slate-900">{testimonial.name}</p>
-                  <p className="text-sm text-gray-500">{testimonial.role}</p>
+                  {/* Divider */}
+                  <div className="w-8 h-1 bg-gradient-to-r from-amber-400 to-amber-300 rounded-full mb-6" />
+
+                  {/* Text */}
+                  <p className="text-slate-700 mb-6 leading-relaxed font-medium italic">
+                    "{testimonial.text}"
+                  </p>
+
+                  {/* Author */}
+                  <div className="pt-4 border-t border-slate-100">
+                    <p className="font-black text-slate-900">{testimonial.name}</p>
+                    <p className="text-sm text-slate-500 font-semibold">{testimonial.role}</p>
+                  </div>
                 </div>
               </motion.div>
             ))}

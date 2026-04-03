@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function Hero() {
   const containerVariants = {
@@ -133,50 +134,68 @@ export default function Hero() {
 
           {/* Right Side - Featured Car */}
           <motion.div
-            className="relative h-96 lg:h-full flex items-center justify-center"
+            className="relative flex items-center justify-center h-full min-h-96"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            {/* Car Image Background */}
+            {/* Large Gradient Background */}
             <motion.div
-              className="absolute inset-0 bg-gradient-to-tr from-red-500/20 to-orange-500/20 rounded-3xl"
+              className="absolute inset-0 bg-gradient-to-br from-red-500/40 via-orange-500/20 to-transparent rounded-3xl blur-2xl"
               animate={{ 
-                boxShadow: ["0 0 60px rgba(239, 68, 68, 0.2)", "0 0 100px rgba(239, 68, 68, 0.4)", "0 0 60px rgba(239, 68, 68, 0.2)"],
-                scale: [1, 1.05, 1]
+                scale: [1, 1.15, 1],
+                opacity: [0.6, 0.8, 0.6],
               }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
             />
 
-            {/* Car Icon */}
+            {/* Secondary Glow */}
             <motion.div
-              className="text-9xl"
+              className="absolute inset-12 bg-gradient-to-t from-red-600/20 to-transparent rounded-2xl blur-3xl"
+              animate={{ 
+                scale: [1.2, 1, 1.2],
+              }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            />
+
+            {/* Car Image Container */}
+            <motion.div
               animate={{
-                y: [0, -25, 0],
-                rotate: [0, 3, -3, 0],
+                y: [0, -20, 0],
               }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              className="relative z-20 flex items-center justify-center"
             >
-              🚗
+              <div className="relative w-full h-96 flex items-center justify-center">
+                <Image
+                  src="/images/logos/hero-car.png"
+                  alt="Hero Car Illustration"
+                  width={450}
+                  height={350}
+                  priority
+                  className="object-contain drop-shadow-2xl w-auto h-auto max-w-md"
+                />
+              </div>
             </motion.div>
 
-            {/* Floating Cards */}
+            {/* Floating Price Card - Bottom Left */}
             <motion.div
-              className="absolute bottom-10 left-0 bg-white rounded-lg p-4 shadow-2xl"
-              animate={{ y: [0, -15, 0] }}
+              className="absolute bottom-12 left-4 bg-white rounded-xl p-4 shadow-2xl z-30"
+              animate={{ y: [0, -10, 0] }}
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
             >
-              <p className="text-sm text-gray-600">Harga Mulai Dari</p>
-              <p className="text-2xl font-bold text-red-600">6.5 Juta</p>
+              <p className="text-xs text-gray-500 font-semibold uppercase">Harga Mulai Dari</p>
+              <p className="text-xl font-bold text-red-600">6.5 Juta</p>
             </motion.div>
 
+            {/* Floating Installment Card - Top Right */}
             <motion.div
-              className="absolute top-10 right-0 bg-white rounded-lg p-4 shadow-2xl"
-              animate={{ y: [0, 15, 0] }}
+              className="absolute top-12 right-4 bg-white rounded-xl p-4 shadow-2xl z-30"
+              animate={{ y: [0, 10, 0] }}
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1 }}
             >
-              <p className="text-sm text-gray-600">Cicilan Per Bulan</p>
-              <p className="text-2xl font-bold text-blue-600">Rp 3.8 Juta</p>
+              <p className="text-xs text-gray-500 font-semibold uppercase">Cicilan Per Bulan</p>
+              <p className="text-xl font-bold text-blue-600">Rp 3.8 Juta</p>
             </motion.div>
           </motion.div>
         </div>
